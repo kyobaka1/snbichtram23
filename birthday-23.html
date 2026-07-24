@@ -1,0 +1,1036 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="icon" type="image/png" href="images/logo.jpg" sizes="192x192">
+  <title>KỶ NIỆM SINH NHẬT BÍCH TRÂM — 23 TUỔI</title>
+  <style>
+    /* Reset & body */
+    *{margin:0;padding:0;box-sizing:border-box}
+    body{
+      background:#000;
+      color:#333;
+      font-family:"Segoe UI",Tahoma,sans-serif;
+      display:flex;justify-content:center;min-height:100vh;padding:1rem;
+    }
+    /* Mobile container */
+    .wrapper{width:100%;max-width:400px;background:#fff;border-radius:8px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,.1)}
+
+    /* ===== TOP BANNER (HEADER + HERO chung 1 nền hình chữ nhật) ===== */
+      .top-cover{
+        position: relative;
+        color: #fff;
+      }
+      .top-bg{
+        width: 100%;
+        height: auto;          /* Ảnh tự co, không bị cắt */
+        display: block;
+      }
+      .top-cover::after{
+        content:"";
+        position:absolute;inset:0;
+      }
+      /* Đặt nội dung chồng lên ảnh */
+      .top-cover > header,
+      .top-cover > .hero{
+        position: absolute;
+        left:0; width:100%;
+      }
+      .top-cover > header{ top:0; }
+      .top-cover > .hero{ top:0; } /* đúng bằng chiều cao header */
+
+
+    .header-img-wrap{position:relative;top:0;z-index:10;}
+#headerImg{width:100%;height:auto;display:block;}
+header a.zone{position:absolute;top:0;height:100%;display:block;text-indent:-9999px;overflow:hidden;}
+header a.left-zone{left:0;width:30%;}
+header a.right-zone{right:0;width:30%;}
+header a.zone{position:absolute;top:0;height:100%;display:block;text-indent:-9999px;overflow:hidden;}
+header a.left-zone{left:0;width:30%;}
+header a.right-zone{right:0;width:30%;}
+    header a{color:#fff;text-decoration:none;transition:opacity .2s;white-space:nowrap}
+    header a:hover{opacity:.7}
+    .logo-title{font-size:1.05rem;font-weight:600;color:#fff;text-shadow:0 1px 2px rgba(0,0,0,.4)}
+
+    .hero{position:relative;z-index:2;display:flex;align-items:center;justify-content:center;height:300px;text-align:center;padding:0 1rem;}
+    .hero h1{font-size:1.8rem;margin-bottom:.5rem;text-shadow:0 2px 4px rgba(0,0,0,.6)}
+    .hero button{padding:.5rem 1rem;border:none;border-radius:4px;background:#ff6b81;color:#fff;font-size:1rem;cursor:pointer}
+
+    section{padding:1rem}
+
+    /* Timeline */
+    .timeline{display:flex;flex-direction:column;gap:1rem}
+    .timeline-item{display:flex;gap:.75rem;align-items:center}
+    .timeline-item img{width:60px;height:60px;object-fit:cover;border-radius:4px;background:#eee}
+    .timeline-item .text{flex:1}
+
+    /* Message */
+    #message p{line-height:1.5}
+
+    /* Guestbook */
+    #guestbook .guestbook-form{display:flex;flex-direction:column;gap:.5rem}
+    #guestbook input,#guestbook textarea{width:100%;padding:.5rem;border:1px solid #ccc;border-radius:4px;resize:vertical}
+    #guestbook button{align-self:flex-end;padding:.5rem 1rem;border:none;border-radius:4px;background:#ff6b81;color:#fff;cursor:pointer}
+    .guestbook-list{list-style:none;margin-top:1rem}
+    .guestbook-list li{background:#f9f9f9;padding:.5rem;border-radius:4px;margin-bottom:.5rem;font-size:.9rem}
+
+    /* Gallery */
+    .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:.5rem}
+    .gallery img{width:100%;display:block;object-fit:cover;aspect-ratio:1;background:#eee}
+
+    /* Video */
+    .video-wrap{position:relative;padding-top:56.25%;overflow:hidden;border-radius:8px;background:#000}
+    .video-wrap iframe{position:absolute;top:0;left:0;width:100%;height:100%}
+
+    /* Gifts */
+    .gifts-list{display:grid;grid-template-columns:repeat(2,1fr);gap:.5rem}
+    .gift-item{text-align:center}
+    .gift-item img{width:100%;display:block;object-fit:cover;aspect-ratio:1;background:#eee;border-radius:4px}
+    .gift-item p{margin:.5rem 0;font-size:.9rem}
+    .gift-item a{display:inline-block;padding:.3rem .6rem;border-radius:4px;background:#4CAF50;color:#fff;text-decoration:none;font-size:.85rem}
+
+    footer{padding:1rem;text-align:center;font-size:.8rem;color:#666;background:#f1f1f1}
+  </style>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+</head>
+<style type="text/css">
+  /* Vùng slider chiếm full chiều ngang mobile, tràn ra ngoài một chút để thấy nửa slide */
+.memory-slider{
+  width: 100%; position: absolute; top: 220px;
+  overflow: visible;            /* quan trọng để thấy nửa slide 2 bên */
+  padding: 10px 0;              /* thêm khoảng cách trên dưới */
+}
+
+/* Mỗi slide có width tự tính (auto) để Swiper canh giữa */
+.memory-slider .swiper-slide{
+  width: 80%;                   /* slide chính ~75% chiều ngang container */
+  transition: transform .35s, opacity .35s;
+  transform-origin: center center;
+  opacity: .8;
+}
+
+/* Ảnh chữ nhật, bo góc nhẹ */
+.memory-slider img{
+  width: 100%;
+  max-height: 350px;
+  display: block;
+  border-radius: 8px;
+  object-fit: cover;
+}
+
+/* Slide active (ở giữa) phóng to 1.0, hai bên scale ~0.75 */
+.memory-slider .swiper-slide-active{
+  transform: scale(1);
+  opacity: 1;
+}
+.memory-slider .swiper-slide-prev,
+.memory-slider .swiper-slide-next{
+  transform: scale(.75);
+  opacity: .85;
+}
+
+/* Đảm bảo chỉ hiện 1/2 slide hai bên: dùng width + centered + spaceBetween hợp lý */
+
+</style>
+<style type="text/css">
+  /* ==== LOVE STORY TIMELINE (MOBILE) ==== */
+.love-story{
+  padding: 1rem .75rem 2rem;
+  background: #fff;
+  color: #333;
+}
+.ls-title{
+  font-size: 1.3rem;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 1.2rem;
+  position: relative;
+}
+.ls-title::after{
+  content:"";
+  display:block;
+  width:60px;height:3px;
+  background:#ff6b81;
+  margin:.4rem auto 0;
+  border-radius:2px;
+}
+/* Center line giữ nguyên */
+.ls-timeline{
+  position:relative;
+  padding:.5rem 0;
+  display:flex;
+  flex-wrap:wrap;
+}
+.ls-timeline::before{
+  content:"";
+  position:absolute;
+  top:0; bottom:0; left:50%;
+  width:2px; background:#e0e0e0; transform:translateX(-50%);
+}
+
+/* Item half width */
+.ls-item{
+  width:50%;
+  margin:0 0 1.4rem 0;
+  position:relative;
+  display:block;
+}
+.ls-item.left{ padding-right:18px; }
+.ls-item.right{ padding-left:18px; }
+
+/* Card width 100% (nằm hẳn về một phía) */
+.ls-card{
+  width:100%;
+  background:#fafafa;
+  border-radius:8px;
+  box-shadow:0 2px 6px rgba(0,0,0,.08);
+  padding:.75rem .9rem;
+  position:relative;
+}
+
+/* Date chip đặt sát line giữa */
+.ls-date{
+  position:absolute;
+  top:0;
+  transform:translateY(-50%);
+  background:#fff;
+  padding:.25rem .5rem;
+  border-radius:12px;
+  font-size:.75rem;
+  font-weight:600;
+  color:#444;
+  box-shadow:0 0 0 2px #fff;
+}
+.ls-item.left .ls-date{ right:-10px; }   /* sát line giữa */
+.ls-item.right .ls-date{ left:-10px;  }
+
+/* Tag, header, content giữ nguyên */
+
+.ls-item.left .ls-card{ margin-right:18px; }
+.ls-item.right .ls-card{ margin-left:18px; }
+.ls-descreption{
+  display: block;
+  height: 140px;
+  padding: 10px;
+  border-radius: 8px;
+  background: #f2f2f2;
+  font-weight: inherit;
+  font-size: 0.9rem;
+
+}
+
+/* tag chip */
+.ls-tag{
+  display:inline-block;
+  padding:.18rem .45rem;
+  border-radius:10px;
+  font-size:.68rem;
+  font-weight:600;
+  color:#fff;
+  margin-bottom:.35rem;
+}
+
+.ls-header{
+  font-weight:600;
+  margin-bottom:.35rem;
+  font-size:.9rem;
+  color:#333;
+}
+.ls-content{
+  font-size:.8rem;
+  line-height:1.45;
+  color:#555;
+}
+.ls-more{
+  color:#ff6b81;
+  font-size:.78rem;
+  margin-top:.25rem;
+  display:inline-block;
+}
+
+@media (min-width:401px){
+  /* vẫn khóa kích thước mobile, nền ngoài đen như cũ */
+  .love-story{max-width:400px;margin:0 auto;}
+}
+.ls-toggle-btn{
+  margin: .5rem auto 0;
+  display:block;
+  padding:.45rem .9rem;
+  border:none;
+  border-radius:20px;
+  background:#ff6b81;
+  color:#fff;
+  font-size:.85rem;
+  cursor:pointer;
+}
+/* Overlay */
+#love-gate {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,.8);
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+  transition: opacity .4s ease;
+}
+
+#love-gate.gate-hide { opacity: 0; pointer-events: none; }
+
+.gate-card {
+  width: min(90vw, 360px);
+  background: #fff;
+  padding: 24px 28px;
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: 0 12px 32px rgba(0,0,0,.35);
+  animation: pop .45s cubic-bezier(.18,.89,.32,1.28);
+}
+
+.gate-card h2 { margin: 0 0 12px; font-size: 22px; }
+.gate-card p { margin: 0 0 12px; }
+.gate-card input[type="date"] {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px; /* tránh iOS zoom */
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin-bottom: 14px;
+}
+.gate-card button {
+  width: 100%;
+  padding: 10px 12px;
+  font-size: 16px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  background: #ff6b81;
+  color: #fff;
+  font-weight: 600;
+  transition: transform .1s;
+}
+.gate-card button:active { transform: scale(.97); }
+.error-msg { color: #e03131; min-height: 20px; margin-top: 8px; font-size: 14px; }
+
+@keyframes pop {
+  from { transform: scale(.8); opacity: 0; }
+  to   { transform: scale(1); opacity: 1; }
+}
+
+/* Trợ năng ẩn label */
+.sr-only {
+  position: absolute;
+  width: 1px; height: 1px;
+  padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0,0,0,0);
+  border: 0;
+}
+
+
+</style>
+<body>
+  <!-- Gate Overlay -->
+  <div id="love-gate" class="gate-show">
+    <div class="gate-card">
+      <h2>Muốn vào xem hả bae? 😏</h2>
+      <p>Chọn đúng <strong>ngày mình gặp anh</strong> nhé!</p>
+
+      <label for="love-date" class="sr-only">Ngày đó là</label>
+      <input id="love-date" type="date" />
+
+      <button id="love-submit">Mở cửa</button>
+      <p id="love-error" class="error-msg" aria-live="polite"></p>
+    </div>
+  </div>
+
+  <audio id="bgm" src="images/music.mp3" preload="auto" loop></audio>
+  <div class="wrapper">
+    <div class="top-cover">
+      <img src="images/background-top.jpg" alt="" class="top-bg">
+      <header class="header-img-wrap">
+      <img src="images/header.png" alt="header" id="headerImg" />
+      <a href="#love-story" class="zone left-zone" aria-label="past"></a>
+      <a href="#will-story" class="zone right-zone" aria-label="next"></a>
+    </header>
+      <div class="hero">
+        <div class="hero-content">
+          <img src="images/header-2.png" alt="header" id="headerImg" />
+        </div>
+      </div>
+       <div class="memory-slider swiper">
+          <div class="swiper-wrapper">
+            <div class="swiper-slide"><img src="images/z1.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="images/z2.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="images/z3.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="images/z4.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="images/z5.jpg" alt=""></div>
+            <div class="swiper-slide"><img src="images/z6.jpg" alt=""></div>
+          </div>
+        </div>
+        <script>
+  const swiper = new Swiper('.memory-slider', {
+    slidesPerView: 'auto',
+    centeredSlides: true,
+    spaceBetween: 5,             // khoảng cách giữa các slide
+    loop: true,
+    autoplay: {
+      delay: 2500,
+      disableOnInteraction: false
+    },
+    speed: 800
+  });
+</script>
+
+    <div class="hero-content-2" style="position: absolute; top: 630px">
+          <img src="images/header-3.png" alt="header" id="headerImg" />
+    </div>
+
+    </div>
+
+    <section id="love-story" class="love-story">
+      <div class="hero-content">
+          <img src="images/ls-banner.jpg" alt="header" id="headerImg" />
+        </div>
+
+      <h2 class="ls-title">we were together</h2>
+      <div class="ls-descreption">
+          Quen nhau 66 ngày, yêu em 44 ngày! Đã cùng em với những câu chuyện của <b>tuổi 22</b> với những kỉ niệm vui có, buồn có, ngọt ngào có, giận dỗi cũng có.</br>
+          Hãy trân trọng những gì đã có cùng nhau nhé bae!
+      </div>
+      <div id="ls-timeline" class="ls-timeline">
+        <!-- JS sẽ render timeline items vào đây -->
+      </div>
+    </section>
+    <script>
+/* ===== DATA ===== */
+const loveEvents = [
+  {
+    date: "18/05/2025",
+    type: "Vui",
+    header: "Facebook dating",
+    content: `Đêm rồi mới nhắn, mà nói gì nói quá chời :))) 
+Cô ấy hỏi, thấy 3h rồi nên bảo hôm sau kể cho nghe vì nhắn mỏi tay => ý là muốn ngủ. Cổ ko chịu nên call kể, thế là công cuộc thức thâu đêm bắt đầu từ đây :)))`
+  },
+  {
+    date: "19/05/2025",
+    type: "Vui",
+    header: "Gặp nhau lần đầu",
+    content: `Lúc về muốn xỉu, lần đầu nói chuyện với người khác lâu vậy. Tắt nguồn luôn, xem tông đít xe người ta mấy lần :)))
+Mới vừa qua sinh nhật 30 mấy hôm mà vẫn làm mấy chuyện trẻ con này nữa chứ 🤭`
+  },
+  {
+    date: "20/05/2025",
+    type: "Vui",
+    header: "Dating 24h",
+    content: `Chời ơi. Đi từ sáng ngồi Katinat, trưa chiều Highland, tối Aeon, khuya 4h sáng???
+Năng lượng đâu ra thế hả cậu, tui tưởng cậu low-energy mà?`
+  },
+  {
+    date: "21/05/2025",
+    type: "Vui",
+    header: "Coi bài tử vi tarot",
+    content: `Vợ tui gia trưởng :)))`
+  },
+  {
+    date: "22/05/2025",
+    type: "Vui",
+    header: "Khoe lại hình cũ",
+    content: `Hồi xưa trẻ trâu thấy ớn :)) May giờ mới gặp chứ không phải hồi đấy.`
+  },
+  {
+    date: "23/05/2025",
+    type: "Vui",
+    header: "Katinat",
+    content: `Cũng thức thâu đêm qua rồi mới đi cafe sáng cơ :)))`
+  },
+  {
+    date: "24/05/2025",
+    type: "Vui",
+    header: "Uống rượu Caby",
+    content: `Uống có vài ly rượu mà cảm thấy say, cũng không chắc là anh đang say rượu hay say ai đó nữa :D
+
+Nói ra 1 vài lời hứa, 1 vài lời cam kết để chứng minh. Mình có vội quá ko nhỉ? ...`
+  },
+  {
+    date: "26/05/2025",
+    type: "Vui",
+    header: "Tất Uniqlo + Cộng + Dating Thâu Đêm",
+    content: `Cảm xúc ghen đầu tiên bắt nguồn từ hôm nay :)))
+... (lúc đi trên xe máy đi từ Cộng sang quán bún bò)`
+  },
+  {
+    date: "28/05/2025",
+    type: "Cô ấy giận",
+    header: "Cô ấy giận: Lần 1",
+    content: `Nặng lời zới cô ấy! Lần sau không được ăn nói kiểu vậy nữa nghe Vương!`
+  },
+  {
+    date: "30/05/2025",
+    type: "Vui",
+    header: "Highland Date + Phố Đi Bộ",
+    content: `Hơi ghen vì chn nyc nên đòi dìa :)))`
+  },
+  {
+    date: "01/06/2025",
+    type: "Ò",
+    header: "Trâm đi Đà Lạt",
+    content: `Bỏ Vương 1 mình.`
+  },
+  {
+    date: "02/06/2025",
+    type: "Buồn",
+    header: "Em buồn, chứ em kh có giận",
+    content: `Hi :) Biết lỗi rùi mờ.`
+  },
+  {
+    date: "06/06/2025",
+    type: "Vui",
+    header: "SƠ YẾU LÝ LỊCH",
+    content: `Bị đọc như 1 cuốn sách :))) Tự mình ghi điểm mạnh, điểm yếu và share tâm tư thầm kín cho cổ.`
+  },
+  {
+    date: "07/06/2025",
+    type: "Vui",
+    header: "Hoàn thành 425 câu + Cấp Certificate",
+    content: `Tốt nghiệp rồi, yeah :3`
+  },
+  {
+    date: "09/06/2025",
+    type: "Vui",
+    header: "Anh Vương tặng em túi chườm ấm bụng",
+    content: `—`
+  },
+  {
+    date: "10/06/2025",
+    type: "Đáng nhớ",
+    header: "Sinh Nhật Vương + Ngày yêu nhau Official",
+    content: `Vì ngày hôm nay tui đã chuẩn bị trước đó rất nhiều...
+(đoạn rất dài – sẽ được rút gọn và mở rộng khi bấm xem thêm) ... Anh yêu em vcl =)))`
+  },
+  {
+    date: "11/06/2025",
+    type: "Ò",
+    header: "Sến + Sóng Gió",
+    content: `Hai đứa hôm nay nói chuyện sến quá tr sến rồi...
+Có ai may mắn bằng tui, mới tỏ tình hôm qua mà hôm nay 2 đứa yêu nhau nhiều như vậy.`
+  },
+  {
+    date: "13/06/2025",
+    type: "Đáng nhớ",
+    header: "First Secret + Thủ Thiêm",
+    content: `... secret time, tui mê cô ấy đến lag cả đầu...
+Sau đó, đói quá nên 2 đứa phải đi :)) ...`
+  },
+  {
+    date: "14/06/2025",
+    type: "Vui",
+    header: "Vương public",
+    content: `Hông biết đăng reel nên cô ấy phải thị phạm cho hướng dẫn...`
+  },
+  {
+    date: "15/06/2025",
+    type: "Đáng nhớ",
+    header: "First time home date",
+    content: `Cảm giác được yêu thật tuyệt!... Đừng làm tôi thất vọng về bản thân, hãy đối xử với cô ấy tốt hơn...`
+  },
+  {
+    date: "17/06/2025",
+    type: "Vui",
+    header: "Public mqh + Về làm chung",
+    content: `Hôm nay được người iu tui flex trên trang cá nhân...
+Chốt lại thì anh yêu em hơn nhiều hơn hôm qua. Moaz...`
+  },
+  {
+    date: "19/06/2025",
+    type: "Đáng nhớ",
+    header: "First time 😭",
+    content: `Hmmm... Hôm nay là ngày kỉ niệm 1 tháng quen biết nhau...
+Anh yêu em x3000! ...`
+  },
+  {
+    date: "20/06/2025",
+    type: "Vui",
+    header: "First work together",
+    content: `Waoo.. Sự khởi đầu tốt đẹp cho 2 đứa...
+Hôm nay, là sự khởi đầu cho 2 zợ chồng tui.`
+  },
+  {
+    date: "20/06/2025",
+    type: "Vui",
+    header: "33h bên nhau",
+    content: `33 giờ bên nhau`
+  },
+  {
+    date: "22/06/2025",
+    type: "Đáng nhớ",
+    header: "Dọn nhà + first x + landmark 81",
+    content: `Hôm nay thật đáng nhớ...
+Đi landmark, như bao cuộc trò truyện, cô ấy lại kể về nyc...`
+  },
+  {
+    date: "23/06/2025",
+    type: "Vui",
+    header: "Khoe cổ lần 2",
+    content: `Một ngày bình dị...
+Anh yêu em nhiều ❤️`
+  },
+  {
+    date: "24/06/2025",
+    type: "Khó chịu",
+    header: "First Thiệt Sự + Em nói sai rồi",
+    content: `Sáng 5h đã dậy rồi...
+Nếu có 1 lúc nào đó anh không ổn mà em mệt mỏi, thì cứ để đại đại vậy đi...`
+  },
+  {
+    date: "26/06/2025",
+    type: "Khó chịu",
+    header: "First yummy + nail + cổ ghen",
+    content: `Ôi, sao anh lại có thể để 2 history \"khó chịu\" liền nhau thế này!...
+Xin lỗi em yêu vì đã làm em iu tức giận...`
+  },
+  {
+    date: "28/06/2025",
+    type: "Đáng nhớ",
+    header: "Ra mắt mẹ",
+    content: `Uầy :))) Tui có bị vội quá không nhi?...
+Tui yêu cổ nhiều hơn :)))`
+  },
+  {
+    date: "29/06/2025",
+    type: "Đáng nhớ",
+    header: "Cổ shopping cùng mẹ + nhà hàng chay cùng họ hàng",
+    content: `Trời quơi :))) Cầm thẻ tui đi mua sắm...
+Yêu em, em yêu của anhhhhh.`
+  },
+  {
+    date: "03/07/2025",
+    type: "Vui",
+    header: "Dating bún đậu phố cổ + tâm sự đê (khuya)",
+    content: `À, hôm đấy sang dọn phòng cho ẻm...
+Xong 2 đứa lại bàn luận về cuộc sống, về genz...`
+  },
+  {
+    date: "05/07/2025",
+    type: "Ò",
+    header: "Bị giận lầm + Phố đi bộ lần 2",
+    content: `Mé. Tối ngủ đã mơ linh tinh rồi...
+Hai đứa cười gần chết...`
+  },
+  {
+    date: "06/07/2025",
+    type: "Đáng nhớ",
+    header: "Katinat Võ Thị Sáu",
+    content: `Hai đứa cả ngày nằm ôm nhau...
+Em yêu của anh.`
+  },
+  {
+    date: "10/07/2025",
+    type: "Đáng nhớ",
+    header: "Kỉ niệm 1 tháng yêu nhau",
+    content: `Tuy một ngày kỉ niệm có vẻ hơi sơ sài...
+Cổ bảo hôm nay kỉ niệm nhưng bình thường như mọi ngày...`
+  },
+  {
+    date: "11/07/2025",
+    type: "Buồn",
+    header: "Tml",
+    content: `bản thân vẫn chưa đủ tinh tế...
+đáng.`
+  },
+  {
+    date: "12/07/2025",
+    type: "Khó chịu",
+    header: "Bí mật tuổi dậy thì",
+    content: `Hmm, cứ tưởng cổ đã hết bực mình cơ...
+Nếu nó quá nặng nề, anh cũng sẽ chịu...`
+  },
+  {
+    date: "13/07/2025",
+    type: "Vui",
+    header: "Hôm nay xa nhau",
+    content: `Ôi, khi con gà tỏ ra vô tội trước hạt thóc của cổ :)))
+Tối về call... tui lại to tiếng với cổ về chn nyc...`
+  },
+  {
+    date: "14/07/2025",
+    type: "Vui",
+    header: "Xa nhau 2 ngày 1 hôm",
+    content: `Ôi, xa nhau mà cảm xúc...
+Cảm thấy việc xa nhau và cho nhau ko gian riêng tư...`
+  },
+  {
+    date: "15/07/2025",
+    type: "Vui",
+    header: "First night work together",
+    content: `Lần đầu tiên làm việc tại công ty với nhau đến 8 giờ...
+Yêu emmmm nhiều...`
+  },
+  {
+    date: "20/07/2025",
+    type: "Vui",
+    header: "First time wax lông néc + nặn mụn",
+    content: `Cột mốc đáng nhớ với 4 ngày bên nhau...
+Đau tới tận tâm can...`
+  }
+];
+
+/* ===== RENDER ===== */
+(function(){
+  const wrap = document.getElementById('ls-timeline');
+  const maxChars = 200;  // rút gọn
+
+  loveEvents.forEach((ev, i)=>{
+    const side = i % 2 === 0 ? 'left' : 'right';
+    const shortTxt = ev.content.length > maxChars ? ev.content.slice(0,maxChars) + '…' : ev.content;
+
+    const item = document.createElement('div');
+    item.className = `ls-item ${side}`;
+
+    item.innerHTML = `
+      <div class="ls-card">
+        <span class="ls-date">${ev.date}</span>
+        <span class="ls-tag" data-type="${ev.type}">${ev.type}</span>
+        <div class="ls-header">${ev.header}</div>
+        <div class="ls-content" data-full="${encodeURIComponent(ev.content)}">${shortTxt}</div>
+        ${ev.content.length > maxChars ? '<a href="#" class="ls-more">xem thêm</a>' : ''}
+      </div>
+    `;
+    wrap.appendChild(item);
+  });
+
+  // toggle more
+  wrap.addEventListener('click', e=>{
+    if(e.target.classList.contains('ls-more')){
+      e.preventDefault();
+      const contentEl = e.target.previousElementSibling;
+      const isExpanded = e.target.dataset.expanded === '1';
+      if(!isExpanded){
+        contentEl.textContent = decodeURIComponent(contentEl.dataset.full);
+        e.target.textContent = 'thu gọn';
+        e.target.dataset.expanded = '1';
+      }else{
+        const full = decodeURIComponent(contentEl.dataset.full);
+        contentEl.textContent = full.slice(0,200) + '…';
+        e.target.textContent = 'xem thêm';
+        e.target.dataset.expanded = '0';
+      }
+    }
+  });
+})();
+</script>
+<script type="text/javascript">
+  const SHOW_FIRST = 4;
+const wrap = document.getElementById('ls-timeline');
+
+loveEvents.forEach((ev, i)=>{ /* ...render như trước... */ });
+
+/* Ẩn bớt */
+const items = [...wrap.querySelectorAll('.ls-item')];
+if(items.length > SHOW_FIRST){
+  items.slice(SHOW_FIRST).forEach(el => el.style.display = 'none');
+
+  const btn = document.createElement('button');
+  btn.id = 'ls-toggle';
+  btn.textContent = 'Xem tiếp hông bae?';
+  btn.className = 'ls-toggle-btn';
+  wrap.after(btn);
+
+  btn.addEventListener('click', ()=>{
+    const expanded = btn.dataset.expanded === '1';
+    if(!expanded){
+      items.slice(SHOW_FIRST).forEach(el => el.style.display = '');
+      btn.textContent = 'Thu gọn';
+      btn.dataset.expanded = '1';
+    }else{
+      items.slice(SHOW_FIRST).forEach(el => el.style.display = 'none');
+      btn.textContent = 'Xem tiếp hông bae?';
+      btn.dataset.expanded = '0';
+      wrap.scrollIntoView({behavior:'smooth'});
+    }
+  });
+}
+
+</script>
+
+    <section id="will-story" class="will-story">
+      <div class="hero-content">
+          <img src="images/will-banner.jpg" alt="header" id="headerImg" />
+      </div>
+
+      <h2 class="ls-title">we will together</h2>
+      <div class="ls-descreption" style="height: 170px">
+          Tất nhiên, anh vẫn chưa thể nào thoã mãn với love story có 40 hàng, mà anh muốn cùng em xây dựng thêm 400 4000 hàng nữa để lúc về già 2 đứa có thể ngồi xem lại cùng con cháu.</br>
+          Chuyện xa hông có tính trước, nhưng chúng ta có thể bắt đầu cố gắng từ <b>tuổi 23</b> của em, cùng nhau!
+      </div>
+      <div class="hero-content">
+          <img src="images/will-top-1.png" alt="header" id="headerImg" />
+      </div>
+      <div class="hero-content">
+          <img src="images/will-top-2.jpg" alt="header" id="headerImg" />
+      </div>
+      <div class="hero-content">
+          <img src="images/will-top-3.jpg" alt="header" id="headerImg" />
+      </div>
+      <div class="hero-content">
+          <img src="images/bichtram-gif.gif" alt="header" id="headerImg" />
+      </div>
+      </section>
+      <style type="text/css">
+        #love-letter {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  line-height: 1.6;
+  font-size: 16px;
+  font-weight: inherit;
+
+}
+
+.type-on-scroll {
+  min-height: 1.5em;            /* để ban đầu không bị nhảy layout */
+  white-space: pre-wrap;         /* giữ xuống dòng nếu có */
+  margin: 24px 0;
+  opacity: 0;                    /* ẩn trước khi gõ */
+  transition: opacity .2s;
+}
+
+.type-on-scroll.typing,
+.type-on-scroll.typed {
+  opacity: 1;
+}
+.type-on-scroll {
+  opacity: 0;
+  min-height: 1.5em;
+  white-space: pre-wrap;
+  transition: opacity .2s;
+  position: relative; 
+}
+
+.typing, .typed { opacity: 1; }
+
+.old-paper {
+  position: relative;
+  z-index: 0;
+  padding: 48px 24px;
+  background: #fdf9f0;              /* màu nền kem nhạt */
+  box-shadow: 0 0 1px rgba(0,0,0,.2);
+  filter: sepia(.12) contrast(1.02);
+  background-image: url("images/background-message.png") ;
+  background-size: cover;
+  background-position: top;
+  background-repeat: no-repeat
+}
+
+/* lớp giấy nhăn/texture */
+.old-paper::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: .25;
+  mix-blend-mode: multiply;          /* trộn màu với nền */
+}
+
+/* vệt vàng nhạt ở rìa */
+.old-paper::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 120%, rgba(0,0,0,.1) 0%, rgba(0,0,0,0) 70%) ,
+              radial-gradient(circle at 0% 0%,     rgba(255,210,120,.25) 0%, rgba(0,0,0,0) 55%) ,
+              radial-gradient(circle at 100% 0%,   rgba(255,210,120,.25) 0%, rgba(0,0,0,0) 55%);
+  opacity: .6;
+  mix-blend-mode: multiply;
+  filter: blur(1px);
+}
+
+      </style>
+      <h2 class="ls-title">message to Bích Trâm</h2>
+      <section id="love-letter" class="old-paper">
+        <div style="background: rgba(255,255,255,0.6); padding: 10px; border-radius: 5px;">
+        <p class="type-on-scroll" data-text="Em yêu, vài dòng chữ trong thiệp giấy không thể truyền tải những nội dung anh muốn gửi cho em. Vì tình yêu ❤ trong đó nặng hàng Gigabyte dữ liệu..."></p>
+        <p class="type-on-scroll" data-text="Cảm ơn em đã đến bên anh và yêu anh!"></p>
+        <p class="type-on-scroll" data-text="Anh đã nghĩ làm sao để em có 1 ngày sinh nhật đầu tiên bên anh đủ WOW với sự lãng mạng và bất ngờ. Thật sự là khó vì anh trước đây chưa từng làm, chưa từng trải nghiệm."></p>
+        <p class="type-on-scroll" data-text="Xong anh lại nghĩ lại câu nói em hay nói giỡn với anh, 2 đứa mình dùng toàn bộ chuyên môn học được để yêu đương. Nên nó đó, đây là kết quả!"></p>
+        <p class="type-on-scroll" data-text="Anh chúc em sinh nhật vui vẻ & hạnh phúc bên anh! Tuổi 23 bên anh sẽ có thêm càng nhiều trải nghiệm, càng được yêu thương và chiều chuộng, càng trưởng thành và xinh xắn khoẻ mạnh."></p>
+        <p class="type-on-scroll" data-text="Bích Trâm, anh yêu em rất rất nhiều.... nhiều vcl. Ngọc Vương."></p>
+        </div>
+  
+</section>
+
+   
+
+    <footer>Made with ❤ by Ngọc Vương to Bích Trâm</footer>
+  </div>
+
+  <script>
+    // Guestbook submission
+    document.getElementById('gbSubmit').addEventListener('click',()=>{
+      const name=document.getElementById('gbName').value.trim();
+      const msg=document.getElementById('gbMessage').value.trim();
+      if(!name||!msg) return;
+      const li=document.createElement('li');
+      li.textContent=`${name}: ${msg}`;
+      document.querySelector('.guestbook-list').appendChild(li);
+      document.getElementById('gbName').value='';
+      document.getElementById('gbMessage').value='';
+    });
+
+    // Lazy load images
+    document.addEventListener('DOMContentLoaded',()=>{
+      const lazyImages=document.querySelectorAll('img.lazy');
+      if('IntersectionObserver' in window){
+        const obs=new IntersectionObserver((entries,observer)=>{
+          entries.forEach(entry=>{
+            if(entry.isIntersecting){
+              const img=entry.target;img.src=img.dataset.src;img.classList.remove('lazy');observer.unobserve(img);
+            }
+          });
+        });
+        lazyImages.forEach(img=>obs.observe(img));
+      }else{
+        lazyImages.forEach(img=>img.src=img.dataset.src);
+      }
+    });
+  </script>
+<script>
+  const audio = document.getElementById('bgm');
+
+  // 1. Cố gắng autoplay khi load
+  document.addEventListener('DOMContentLoaded', async () => {
+    try {
+      // Một số trình duyệt cho phép play nếu volume=0
+      audio.volume = 0;
+      await audio.play();
+      // Tăng volume sau 300ms
+      setTimeout(()=> audio.volume = 0.6, 300);
+    } catch (err) {
+      // Bị chặn -> hiện nút nhỏ
+      showPlayBtn();
+    }
+  });
+
+  // 2. Khi user chạm/lướt, thử play lại
+  ['touchstart','click','scroll'].forEach(evt=>{
+    window.addEventListener(evt, tryPlayOnce, { once:true, passive:true });
+  });
+
+  function tryPlayOnce(){
+    audio.volume = 0.6;
+    audio.play().catch(showPlayBtn);
+  }
+  function showPlayBtn(){
+    if (document.getElementById('playBgmBtn')) return;
+    const btn = document.createElement('button');
+    btn.id = 'playBgmBtn';
+    btn.textContent = '▶️ Bật nhạc';
+    Object.assign(btn.style, {
+      position:'fixed', bottom:'16px', right:'16px', zIndex:9999,
+      padding:'10px 14px', border:'none', borderRadius:'20px',
+      background:'#ff6b81', color:'#fff', fontSize:'14px',
+      boxShadow:'0 2px 6px rgba(0,0,0,.2)', cursor:'pointer'
+    });
+    btn.onclick = ()=>{ audio.volume = 0.6; audio.play(); btn.remove(); };
+    document.body.appendChild(btn);
+  }
+
+      
+
+</script>
+<script>
+  (() => {
+    // Đổi theo format bạn muốn, giữ ISO để dễ so sánh
+    const CORRECT_DATE = "2025-05-19";
+
+    const gateEl   = document.getElementById("love-gate");
+    const inputEl  = document.getElementById("love-date");
+    const btnEl    = document.getElementById("love-submit");
+    const errEl    = document.getElementById("love-error");
+
+    // Optional: khóa scroll khi gate hiện
+    document.body.style.overflow = 'hidden';
+
+    btnEl.addEventListener("click", () => {
+      const val = inputEl.value; // yyyy-mm-dd
+      if (!val) {
+        errEl.textContent = "Chưa chọn ngày nè!";
+        return;
+      }
+      if (val === CORRECT_DATE) {
+        // Mở khóa
+        gateEl.classList.add("gate-hide");
+        setTimeout(() => {
+          gateEl.style.display = "none";
+          document.body.style.overflow = ''; // trả scroll
+        }, 400);
+
+        // Lưu localStorage để lần sau khỏi hỏi nữa
+        localStorage.setItem("love_gate_passed", "1");
+      } else {
+        errEl.textContent = "Sai rồi nha, thử nhớ lại xem! 🙃";
+        // Clear sau 2s cho nhẹ
+        setTimeout(() => errEl.textContent = "", 2000);
+      }
+    });
+
+    // Nếu đã vượt qua trước đó
+    if (localStorage.getItem("love_gate_passed") === "1") {
+      gateEl.style.display = "none";
+      document.body.style.overflow = '';
+    }
+  })();
+</script>
+
+<script>
+(() => {
+  const SPEED = 35; // ms / ký tự
+  const paras = [...document.querySelectorAll('.type-on-scroll')];
+
+  // Bắt đầu khi section vào viewport (hoặc gọi thẳng typeAll() nếu muốn auto ngay)
+  const io = new IntersectionObserver((entries) => {
+    if (entries.some(e => e.isIntersecting)) {
+      io.disconnect();
+      typeAllSequentially(paras);
+    }
+  }, { threshold: 0.2 });
+  io.observe(document.getElementById('love-letter')); // id của section thư
+
+  async function typeAllSequentially(list) {
+    for (const el of list) {
+      if (el.classList.contains('typed')) continue; // đã gõ rồi thì bỏ
+      await typeOne(el);
+    }
+  }
+
+  function typeOne(el) {
+    return new Promise(resolve => {
+      const text = el.getAttribute('data-text') || '';
+      let i = 0;
+      el.classList.add('typing');
+      el.textContent = '';
+
+      const timer = setInterval(() => {
+        el.textContent += text.charAt(i++);
+        if (i >= text.length) {
+          clearInterval(timer);
+          el.classList.remove('typing');
+          el.classList.add('typed');
+          resolve();
+        }
+      }, SPEED);
+    });
+  }
+})();
+</script>
+
+
+
+</body>
+</html>
