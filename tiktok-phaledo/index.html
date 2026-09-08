@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>PHALEDO TikTok 30D Playbook</title>
+<style>
+body{font-family:system-ui,-apple-system,Segoe UI,sans-serif;margin:0;display:grid;place-items:center;min-height:100vh;background:#f5f7fb;color:#172033}
+.box{background:#fff;border:1px solid #e6e9f0;border-radius:16px;padding:22px 26px;box-shadow:0 10px 30px rgba(30,42,70,.08)}
+</style>
+</head>
+<body>
+<div class="box">Đang tải sổ tay vận hành PHALEDO TikTok…</div>
+<script src="part1.js"></script>
+<script src="part2.js"></script>
+<script src="part3.js"></script>
+<script src="part4.js"></script>
+<script src="part5.js"></script>
+<script>
+(async()=>{
+  const bin=atob(window.PHALEDO_B64||"");
+  const bytes=new Uint8Array(bin.length);
+  for(let i=0;i<bin.length;i++) bytes[i]=bin.charCodeAt(i);
+  const stream=new Blob([bytes]).stream().pipeThrough(new DecompressionStream('gzip'));
+  const html=await new Response(stream).text();
+  document.open(); document.write(html); document.close();
+})().catch(e=>{
+  document.body.innerHTML='<div class="box"><b>Không thể tải tài liệu.</b><br>'+String(e)+'</div>';
+});
+</script>
+</body>
+</html>
